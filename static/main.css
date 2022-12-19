@@ -37,7 +37,11 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
+.form-style input#inputHowMuch {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
 .d-welcome-msg {
     margin: 10px 20px 0px 0px;
 }
