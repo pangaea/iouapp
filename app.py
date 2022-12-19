@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, json
 from flaskext.mysql import MySQL
 
 import controllers.authentication
@@ -6,16 +6,18 @@ import controllers.iou_controller
 import globals
 
 app = Flask(__name__)
+app.secret_key = "1234567890"
+
+with open('config.json') as config_file:
+    config_data = json.load(config_file)
+    
+# MySQL configurations
+app.config['MYSQL_DATABASE_USER'] = config_data['database']['MYSQL_USER']
+app.config['MYSQL_DATABASE_PASSWORD'] = config_data['database']['MYSQL_PASSWORD']
+app.config['MYSQL_DATABASE_DB'] = config_data['database']['MYSQL_DB']
+app.config['MYSQL_DATABASE_HOST'] = config_data['database']['MYSQL_HOST']
 
 globals.mysql = MySQL()
-
-app.secret_key = "1234567890"
- 
-# MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'test'
-app.config['MYSQL_DATABASE_DB'] = 'IouApp'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 globals.mysql.init_app(app)
 
 @app.route("/")
