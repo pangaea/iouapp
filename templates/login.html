@@ -1,0 +1,42 @@
+{% extends 'main_frame.html' %}
+
+{% block content %}
+<script src="/static/scripts/form_utils.js" type="application/javascript"></script>
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold text-center">IOU App</h1>
+        <form id="form-login" action="/api/login" method="POST" class="form-style">
+            <label for="inpuUsertName" class="sr-only">User Name</label>
+            <input
+                type="name"
+                name="inputUserName"
+                id="inpuUsertName"
+                class="form-control"
+                placeholder="User Name"
+                required
+                autofocus
+            />
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input
+                type="password"
+                name="inputPassword"
+                id="inputPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+            />
+
+            <button
+                class="btn btn-lg btn-primary btn-block"
+                type="submit">Login</button>
+                    
+        </form>
+    </div>
+</div>
+<script type="application/javascript">
+    window.addEventListener('load', function() {
+        init("#form-login", "/api/login", "/");
+    });
+</script>
+{% endblock %}

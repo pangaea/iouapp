@@ -1,0 +1,39 @@
+{% extends 'main_frame.html' %}
+
+{% block content %}
+<script src="/static/scripts/form_utils.js" type="application/javascript"></script>
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold text-center">Create An IOU</h1>
+        <form id="form-iou" action="/api/create_iou" method="POST" class="form-style">
+            <label for="inpuUsertName" class="sr-only">Send To</label>
+            <select name="toUserId" class="form-control" required>
+                <option value="" disabled selected>Select user...</option>
+                {% for user in users %}
+                <option value="{{user[0]}}">{{user[1]}}</option>
+                {% endfor %}   
+            </select>
+
+            <label for="inputHowMuch" class="sr-only">How Much</label>
+            <input
+                name="inputHowMuch"
+                id="inputHowMuch"
+                class="form-control"
+                placeholder="How Much"
+                required
+                type="number" min="0.01" step="0.01"
+            />
+
+            <button
+                class="btn btn-lg btn-primary btn-block"
+                type="submit">Submit</button>
+                    
+        </form>
+    </div>
+</div>
+<script type="application/javascript">
+    window.addEventListener('load', function() {
+        init("#form-iou", "/api/create_iou", "/");
+    });
+</script>
+{% endblock %}
