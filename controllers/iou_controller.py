@@ -40,7 +40,6 @@ def create(to_user_id, how_huch):
         return json.dumps({'success':'true', 'message':'User authentication success !'})
     except:
         return json.dumps({'error':"There was an error"})
-        #return redirect("/", code=302)
     finally:
         cursor.close()
         conn.close()

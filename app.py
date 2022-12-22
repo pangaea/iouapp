@@ -38,12 +38,10 @@ def login():
 def logout():
     session.pop("username", None)
     return redirect("/login", code=302)
-    #return render_template('login.html', login_active="active")
 
 @app.route('/create_iou')
 def create_iou():
     return controllers.iou_controller.render_create()
-    #return render_template('create_iou.html', iou_active="active", in_session="true", username=session["username"])
 
 @app.route('/delete_iou')
 def delete_iou():
