@@ -1,6 +1,7 @@
 {% extends 'main_frame.html' %}
 
 {% block content %}
+<div class="left_col">
 <h2>Money owed to you:</h2><br/>
 <div class="row marketing">
     <div class="col-lg-6">
@@ -12,7 +13,9 @@
         {% endfor %}     
     </div>
 </div>
-<hr/>
+</div>
+
+<div class="right_col">
 <h2>Money you owe:</h2><br/>
 <div class="row marketing">
     <div class="col-lg-6">
@@ -22,6 +25,7 @@
         <br/>
         {% endfor %}     
     </div>
+</div>
 </div>
 
 <script type="application/javascript">

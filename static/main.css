@@ -3,6 +3,11 @@ body {
     padding-bottom: 20px;
 }
 
+body .title {
+    font-size:2.25rem!important;
+    box-sizing: border-box;
+}
+
 .form-style {
     max-width: 330px;
     padding: 15px;
@@ -44,4 +49,19 @@ body {
 }
 .d-welcome-msg {
     margin: 10px 20px 0px 0px;
+}
+
+.left_col {
+    vertical-align: top;
+    display: inline-block;
+    width: 50%;
+}
+
+.right_col {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.left_col h2, .right_col h2 {
+    font-size: x-large;
 }
