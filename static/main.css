@@ -8,6 +8,10 @@ body .title {
     box-sizing: border-box;
 }
 
+input, select {
+    margin-bottom: 10px;
+}
+
 .form-style {
     max-width: 330px;
     padding: 15px;
@@ -33,7 +37,6 @@ body .title {
     z-index: 2;
 }
 .form-style input[type="email"] {
-    margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -64,4 +67,8 @@ body .title {
 
 .left_col h2, .right_col h2 {
     font-size: x-large;
+}
+
+.form-table td {
+    padding: 10px 20px 20px 0px;
 }
