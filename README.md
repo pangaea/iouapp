@@ -31,3 +31,7 @@ Initial setup
     python app.py
 - Open browser and navigate to:
     http://localhost:5000/
+    
+Troubleshooting
+- On Windows, if Git isn't using the SSH key, make sure OpenSSH is installed and Git know about it (update path as needed):
+    git config --global core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe
