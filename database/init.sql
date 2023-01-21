@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `IouApp`.`users` (
 CREATE TABLE IF NOT EXISTS `IouApp`.`iou` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `owed` DECIMAL(10,2),
+    `notes` VARCHAR(128) NULL,
     `from_user_id` BIGINT,
     INDEX `from_user_id` (from_user_id),
     FOREIGN KEY (from_user_id) REFERENCES users(id),

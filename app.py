@@ -66,7 +66,8 @@ def apiLogin():
 def apiCreateIou():
     _user_id = request.form['toUserId']
     _how_much = request.form['inputHowMuch']
-    return controllers.iou_controller.create(_user_id, _how_much)
+    _notes = request.form['inputNotes']
+    return controllers.iou_controller.create(_user_id, _how_much, _notes)
 
 if __name__ == "__main__":
     app.run()

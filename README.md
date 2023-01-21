@@ -23,7 +23,7 @@ Setup Code
 
 Initial setup
 1. Open mySQL Workbench query console
-2. Copy entire contents of init.sql and paste into console
+2. Copy entire contents of database/init.sql and paste into console
 3. Execute to create all database entities
 4. Copy config-sample.json to config.json
 5. Update settings to match your local development env.
@@ -31,6 +31,9 @@ Initial setup
     - python app.py
 7. Open browser and navigate to:
     - http://localhost:5000/
+
+Database migrations
+- add_notes_field_to_iou.sql : Adds 'notes' field to iou table.
     
 Troubleshooting
 - On Windows, if Git isn't using the SSH key, make sure OpenSSH is installed and Git know about it (update path as needed):

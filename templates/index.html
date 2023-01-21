@@ -7,7 +7,8 @@
     <div class="col-lg-6">
         {% for iou in owed_to %}
         <h4>${{ iou[0] }}</h4>
-        <div>{{ iou[2] }}</div>
+        <div><b>User:</b> {{ iou[2] }}</div>
+        <div><b>Notes:</b> {{ iou[4] }}</div>
         <div><a href="#" onclick="deleteIou('{{iou[3]}}')">Resolve</a></div>
         <br/>
         {% endfor %}     
@@ -21,7 +22,8 @@
     <div class="col-lg-6">
         {% for iou in owed_from %}
         <h4>${{ iou[0] }}</h4>
-        <div>{{ iou[2] }}</div>
+        <div><b>User:</b> {{ iou[2] }}</div>
+        <div><b>Notes:</b> {{ iou[4] }}</div>
         <br/>
         {% endfor %}     
     </div>

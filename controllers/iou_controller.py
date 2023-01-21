@@ -6,10 +6,10 @@ def query():
         conn = globals.mysql.connect()
         cursor = conn.cursor()
         user_id = session["user_id"]
-        cursor.execute('SELECT owed, from_user_id, users.display_name, iou.id FROM iou INNER JOIN users ON users.id = from_user_id WHERE to_user_id=%s', user_id)
+        cursor.execute('SELECT owed, from_user_id, users.display_name, iou.id, notes FROM iou INNER JOIN users ON users.id = from_user_id WHERE to_user_id=%s', user_id)
         owed_to = cursor.fetchall()
 
-        cursor.execute('SELECT owed, to_user_id, users.display_name, iou.id FROM iou INNER JOIN users ON users.id = to_user_id WHERE from_user_id=%s', user_id)
+        cursor.execute('SELECT owed, to_user_id, users.display_name, iou.id, notes FROM iou INNER JOIN users ON users.id = to_user_id WHERE from_user_id=%s', user_id)
         owed_from = cursor.fetchall()
 
         return render_template('index.html', home_active="active", owed_from=owed_from, owed_to=owed_to)
@@ -29,13 +29,13 @@ def render_create():
         cursor.close()
         conn.close()
 
-def create(to_user_id, how_huch):
+def create(to_user_id, how_huch, notes):
     try:
         conn = globals.mysql.connect()
         cursor = conn.cursor()
         user_id = session["user_id"]
-        cursor.execute('INSERT INTO iou (owed, to_user_id, from_user_id) VALUES (%s, %s, %s)',
-            (how_huch, to_user_id, user_id))
+        cursor.execute('INSERT INTO iou (owed, to_user_id, from_user_id, notes) VALUES (%s, %s, %s, %s)',
+            (how_huch, to_user_id, user_id, notes))
         conn.commit()
         return json.dumps({'success':'true', 'message':'User authentication success !'})
     except:

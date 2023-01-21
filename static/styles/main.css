@@ -63,6 +63,7 @@ input, select {
 .right_col {
     vertical-align: top;
     display: inline-block;
+    width: 48%;
 }
 
 .left_col h2, .right_col h2 {
