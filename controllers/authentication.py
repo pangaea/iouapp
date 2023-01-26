@@ -3,22 +3,25 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import globals
 import sys
 
-def signUp(_username, _displayname, _email, _password):
+def signUp(_username, _displayname, _email, _password, _confirmation):
     try:
+        conn = globals.mysql.connect()
+        cursor = conn.cursor()
         # validate the received values
-        if _username and _displayname and _email and _password:
+        if _username and _displayname and _email and _password and _confirmation:
             # All fields good !!
-            _hashed_password = generate_password_hash(_password)
-            #print('Hashed Password => ' + _hashed_password, file=sys.stderr)
-            conn = globals.mysql.connect()
-            cursor = conn.cursor()
-            cursor.callproc('sp_createUser',(_username,_displayname,_email,_hashed_password))
-            data = cursor.fetchall()
-            if len(data) == 0:
-                conn.commit()
-                return json.dumps({'success':'true', 'message':'User created successfully !'})
+            if _confirmation == _password :
+                _hashed_password = generate_password_hash(_password)
+                #print('Hashed Password => ' + _hashed_password, file=sys.stderr)
+                cursor.callproc('sp_createUser',(_username,_displayname,_email,_hashed_password))
+                data = cursor.fetchall()
+                if len(data) == 0:
+                    conn.commit()
+                    return json.dumps({'success':'true', 'message':'User created successfully !'})
+                else:
+                    return json.dumps({'error':str(data[0])})
             else:
-                return json.dumps({'error':str(data[0])})
+                return json.dumps({'error':"The two passwords don't match"})
         else:
             return json.dumps({'error':'Enter the required fields'})
     finally:

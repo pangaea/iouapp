@@ -54,7 +54,8 @@ def apiSignup():
     _displayname = request.form['inputDisplayName']
     _email = request.form['inputEmail']
     _password = request.form['inputPassword']
-    return controllers.authentication.signUp(_username, _displayname, _email, _password)
+    _confirmation = request.form['confirmPassword']
+    return controllers.authentication.signUp(_username, _displayname, _email, _password, _confirmation)
 
 @app.route('/api/login',methods=['POST'])
 def apiLogin():
